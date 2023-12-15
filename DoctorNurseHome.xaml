@@ -1,0 +1,76 @@
+﻿<Window x:Class="HospitalManagementSystem.DoctorNurseHome"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:HospitalManagementSystem"
+        mc:Ignorable="d"
+        Title="AdminHome" Height="450" Width="700"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{x:Null}" AllowsTransparency="True" 
+        WindowStyle="None" WindowStartupLocation="CenterScreen" >
+    <materialDesign:Card Background="{DynamicResource MaterialDesignPaper}" UniformCornerRadius="15" 
+                     materialDesign:ElevationAssist.Elevation="Dp4">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="30" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="210"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+
+            <materialDesign:PopupBox Grid.Row="0" Grid.Column="2" 
+             PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Height="25" Margin="1,1,1,1">
+
+                <StackPanel Margin="16 10 0 6" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button x:Name="btn_Logout" ToolTip="Log_Out" Content="LogOut" 
+                        Click="logOutBtn_Click"/>
+                    <Button x:Name="btn_exit" ToolTip="Close Application" Content="Exit Application"
+                        Click="exitApp"/>
+                </StackPanel>
+            </materialDesign:PopupBox>
+
+            <materialDesign:ColorZone Grid.Column="0" Grid.Row="1" Background="White"
+                 HorizontalAlignment="Stretch" Margin="15" >
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <StackPanel>
+                        <ListView x:Name="onDutycall" >
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="24-On duty Call" Width="200"/>
+                                </GridView>
+                            </ListView.View>
+
+                        </ListView>
+                    </StackPanel>
+                </ScrollViewer>
+            </materialDesign:ColorZone>
+
+            <materialDesign:ColorZone Grid.Column="1" Grid.Row="1" Background="White"
+               HorizontalAlignment="Stretch" Margin="15" >
+                <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <ListView x:Name="employeesList" SelectionChanged="employeesList_SelectionChanged">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}"/>
+                                    <GridViewColumn Header="Surname" DisplayMemberBinding="{Binding Path=Surname}"/>
+                                    <GridViewColumn Header="Speciality" DisplayMemberBinding="{Binding Path=Specialist}"/>
+                                </GridView>
+                            </ListView.View>
+
+                        </ListView>
+                    </StackPanel>
+                </ScrollViewer>
+            </materialDesign:ColorZone>
+
+        </Grid>
+    </materialDesign:Card>
+</Window>

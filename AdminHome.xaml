@@ -1,0 +1,158 @@
+﻿<Window x:Class="HospitalManagementSystem.AdminHome"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        xmlns:local="clr-namespace:HospitalManagementSystem"
+        mc:Ignorable="d"
+        Title="AdminHome" Height="450" Width="700"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{x:Null}" AllowsTransparency="True" WindowStyle="None"
+         WindowStartupLocation="CenterScreen" >
+    <materialDesign:Card Background="{DynamicResource MaterialDesignPaper}"  UniformCornerRadius="15"
+                         materialDesign:ElevationAssist.Elevation="Dp5">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="200" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="70" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+            <materialDesign:PopupBox Grid.Row="0" Grid.Column="3" 
+                         PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Height="25" Grid.ColumnSpan="2" Margin="2,2,2,2">
+
+                <StackPanel Margin="16 10 0 6" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button x:Name="btn_Logout" ToolTip="Log_Out" Content="LogOut" 
+                            Click="logOutBtn_Click"/>
+                    <Button x:Name="btn_exit" ToolTip="Close Application" Content="Exit"
+                        Click="exitApp"/>
+
+                </StackPanel>
+            </materialDesign:PopupBox>
+
+            <materialDesign:ColorZone Grid.Column="0" CornerRadius="15 0 0 15" Background="White" Grid.RowSpan="4" Height="330">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="0,0,-9,-112" Height="442" VerticalAlignment="Bottom">
+                    <StackPanel Margin="15">
+                        <TextBox Margin="0 5 0 0" x:Name="txtname" Width="100"  FontSize="15" materialDesign:HintAssist.Hint="Name" 
+                            BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}" />
+                        <TextBox Margin="0 5 0 0" x:Name="txtSurname" Width="100"  FontSize="15" materialDesign:HintAssist.Hint="Surname" 
+                            BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}" />
+                        <TextBox Margin="0 5 0 0" x:Name="txtPeselNumber" Width="100"  FontSize="15" materialDesign:HintAssist.Hint="PESEL No." 
+                            BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}" />
+                        <TextBox Margin="0 5 0 0" x:Name="txtUsername" Width="100"  FontSize="15" materialDesign:HintAssist.Hint="Username" 
+                            BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}" />
+                        <ComboBox Margin="0 5 0 0" x:Name="cmbRole" FontSize="15" Width="100" materialDesign:HintAssist.Hint="Role"
+                              BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"
+                              Style="{StaticResource MaterialDesignOutlinedComboBox}" MaxDropDownHeight="150" SelectionChanged="CmbSelection">
+                            <ComboBoxItem Content="Doctor"/>
+                            <ComboBoxItem Content="Nurse"/>
+                            <ComboBoxItem Content="Administrator"/>
+                        </ComboBox>
+                        <TextBox Margin="0 5 0 0" x:Name="txtPWZNumber" Width="100"  FontSize="15" materialDesign:HintAssist.Hint="PWZNumber" 
+                            BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}" IsEnabled="False" />
+
+                        <ComboBox Margin="0 5 0 0" x:Name="cmbSpeciality" FontSize="15" Width="100" materialDesign:HintAssist.Hint="Speciality"
+                          BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"
+                          Style="{StaticResource MaterialDesignOutlinedComboBox}" MaxDropDownHeight="150">
+                            <ComboBoxItem Content="Cardiologist"/>
+                            <ComboBoxItem Content="Urologist"/>
+                            <ComboBoxItem Content="Neurologist"/>
+                            <ComboBoxItem Content="Laryngologist"/>
+                        </ComboBox>
+
+
+                        <PasswordBox Margin="0 5 0 0" x:Name="txtPassword" Width="100" FontSize="15" materialDesign:HintAssist.Hint="Password"
+                            BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                            Style="{StaticResource MaterialDesignOutlinedPasswordBox}" />
+
+
+                    </StackPanel>
+                </ScrollViewer>
+
+            </materialDesign:ColorZone>
+
+            <materialDesign:ColorZone Grid.Column="1" Grid.Row="4" CornerRadius="15 0 0 15" Background="White"
+                                       HorizontalAlignment="Center" Grid.ColumnSpan="2" >
+                <StackPanel Orientation="Horizontal" Margin="1" >
+                    <Button Margin="0 20 10 0" x:Name="updateBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                        materialDesign:ElevationAssist.Elevation="Dp0"  Width="100" 
+                        materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Update" Click="updateBtn_Click"/>
+                    <Button Margin="10 20 10 0" x:Name="AddEmployeeBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                        materialDesign:ElevationAssist.Elevation="Dp0"  Width="150" 
+                        materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Add Employee" Click="AddEmployeeBtn_Click"/>
+                    <Button Margin="0 20 10 0" x:Name="deleteBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                        materialDesign:ElevationAssist.Elevation="Dp0"  Width="100" 
+                        materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Delete" Click="deleteBtn_Click"/>
+                </StackPanel>
+            </materialDesign:ColorZone>
+            <materialDesign:ColorZone Grid.Column="1" Grid.Row="1" Background="White" Margin="10,0,10,0" Height="340" Grid.RowSpan="3" >
+                <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto" >
+                    <StackPanel Grid.Column="1" Grid.Row="0"  >
+                        <ListView x:Name="employeesList" SelectionChanged="employeesList_Change">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}"/>
+                                    <GridViewColumn Header="Surname" DisplayMemberBinding="{Binding Path=Surname}"/>
+                                    <GridViewColumn Header="PESEL No." DisplayMemberBinding="{Binding Path=PESELNumber}" />
+                                    <GridViewColumn Header="UserName" DisplayMemberBinding="{Binding Path=Username}" />
+                                    <GridViewColumn Header="Password" DisplayMemberBinding="{Binding Path=Password}" />
+                                    <GridViewColumn Header="PWZNumber" DisplayMemberBinding="{Binding Path=PWZNumber}" />
+                                    <GridViewColumn Header="Speciality" DisplayMemberBinding="{Binding Path=Specialist}" />
+                                </GridView>
+                            </ListView.View>
+
+                        </ListView>
+                    </StackPanel>
+                </ScrollViewer>
+            </materialDesign:ColorZone>
+            
+            <materialDesign:ColorZone Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3">
+                <StackPanel x:Name="stackPanel" Grid.ColumnSpan="3" IsEnabled="False">
+                    <DatePicker Width="200" x:Name="datePicked" 
+                            materialDesign:HintAssist.Hint="Pick Date" Margin="0 30 0 0"
+                            Style="{StaticResource MaterialDesignFilledDatePicker}" Height="50"  >
+                       
+                    </DatePicker>
+                </StackPanel>
+            </materialDesign:ColorZone>
+            
+            <materialDesign:ColorZone Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <StackPanel x:Name="stackPanel2" IsEnabled="False">
+                        <ListView MinHeight="200" x:Name="OnDuttyCallList" MouseDoubleClick="OnMouseDoubleClickDelete" >
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Width="200" Header="On-Duty Call"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </StackPanel>
+                </ScrollViewer>
+            </materialDesign:ColorZone>
+            
+            <materialDesign:ColorZone Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3">
+                <StackPanel x:Name="stackPanel3" IsEnabled="False">
+                    <Button Margin="0 10 10 10" x:Name="saveDatesBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                            materialDesign:ElevationAssist.Elevation="Dp0"  Width="100" 
+                            materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Save" Click="saveDatesBtn_Click"/>
+                </StackPanel>
+            </materialDesign:ColorZone>
+        </Grid>
+    </materialDesign:Card>
+
+</Window>
